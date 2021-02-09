@@ -176,9 +176,9 @@ for the year.
 
 ## 6. Useful links and resources
 
-- [IndexedDB Concepts (MDN)](http://tinyw.in/7TIr)
-- [Using IndexedDB (MDN)](http://tinyw.in/w6k0)
-- [IndexedDB API (MDN)](http://tinyw.in/GqnF)
+- [IndexedDB Concepts (MDN)](https://developer.mozilla.org/es/docs/Web/API/IndexedDB_API/Conceptos_Basicos_Detras_De_IndexedDB)
+- [Using IndexedDB (MDN)](https://developer.mozilla.org/es/docs/Web/API/IndexedDB_API/Usando_IndexedDB)
+- [IndexedDB API (MDN)](https://developer.mozilla.org/es/docs/Web/API/IndexedDB_API)
 - [IndexedDB Browser Support](https://caniuse.com/#feat=indexeddb)
 
 ## 7. Copyright
