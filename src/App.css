@@ -23,3 +23,11 @@
 .Home-leftcolumn {
   width: 40%;
 }
+
+#ResultArea {
+  padding: 16px;
+}
+
+#ResultArea ol{
+  text-align: initial;
+}
