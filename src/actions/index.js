@@ -14,6 +14,17 @@ const loadDB = () => {
   customer.initialLoad(store.customers);
 }
 
+/**
+ * Get customers from database
+ */
+const getCustomers = (successAction) => {
+  console.log('Get customers');
+
+  let customer = new Customer(DBNAME);
+  customer.getAllCustomers(successAction);
+}
+
 export {
+  getCustomers,
   loadDB,
 };
