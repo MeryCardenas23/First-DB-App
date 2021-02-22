@@ -58,4 +58,39 @@ export default class Customer {
       }
     };
   }
+
+  /**
+   * Get all customers from Market database
+   * @param {none}
+   * @memberof Market
+   */
+  getAllCustomers = (successAction) => {
+    // Open database with version 1
+    const request = indexedDB.open(this.dbName, 1);
+    request.onerror = (event) => {
+      console.log('getAllCustomers - Database error: ', event.target.error.code,
+        " - ", event.target.error.message);
+    };
+
+    request.onsuccess = (event) => {
+      console.log('Get all customers...');
+      const db = event.target.result;
+      const transaction = db.transaction('customers');
+
+      transaction.onerror = function (event) {
+        console.log('getAllCustomers - objectStore error: ', event.target.error.code,
+          " - ", event.target.error.message);
+      };
+
+      transaction.oncomplete = function () {
+        console.log('All customers downloaded!');
+      };
+
+      const getAllRequest = transaction.objectStore('customers').getAll();
+
+      getAllRequest.onsuccess = () => {
+        successAction(getAllRequest.result);
+      }
+    }
+  }
 }
