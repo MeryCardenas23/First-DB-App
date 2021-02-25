@@ -24,7 +24,17 @@ const getCustomers = (successAction) => {
   customer.getAllCustomers(successAction);
 }
 
+/**
+ * Clear all customer data from the database
+ */
+const clearDB = () => {
+  console.log('Delete all rows from the Customers database');
+  let customer = new Customer(DBNAME);
+  customer.removeAllRows();
+}
+
 export {
+  clearDB,
   getCustomers,
   loadDB,
 };
