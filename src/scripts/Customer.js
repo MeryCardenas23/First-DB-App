@@ -93,4 +93,41 @@ export default class Customer {
       }
     }
   }
+
+  /**
+   * Remove all rows from the database
+   * @memberof Customer
+   */
+  removeAllRows = () => {
+    const request = indexedDB.open(this.dbName, 1);
+
+    request.onerror = (event) => {
+      console.log('removeAllRows - Database error: ', event.target.error.code,
+        " - ", event.target.error.message);
+    };
+
+    request.onsuccess = (event) => {
+      console.log('Deleting all customers...');
+      const db = event.target.result;
+      const transaction = db.transaction('customers', 'readwrite');
+
+      transaction.onerror = (event) => {
+        console.log('removeAllRows - Transaction error: ', event.target.error.code,
+          " - ", event.target.error.message);
+      };
+
+      transaction.oncomplete = (event) => {
+        console.log('All rows removed!');
+      };
+
+      const objectStore = transaction.objectStore('customers');
+      const getAllKeysRequest = objectStore.getAllKeys();
+
+      getAllKeysRequest.onsuccess = (event) => {
+        getAllKeysRequest.result.forEach(key => {
+          objectStore.delete(key);
+        });
+      }
+    }
+  }
 }
