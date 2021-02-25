@@ -2,7 +2,7 @@ import React from 'react';
 
 import ControlPanel from '../components/ControlPanel';
 import ResultArea from '../components/ResultArea';
-import { loadDB, getCustomers } from "../actions";
+import { loadDB, getCustomers, clearDB } from "../actions";
 
 const showCustomers = (customers) => {
   const resultArea = document.getElementById('ResultArea');
@@ -36,6 +36,7 @@ const Home = () => (
           loadDB,
           getCustomers,
           showCustomers,
+          clearDB,
         }}
       />
     </section>
