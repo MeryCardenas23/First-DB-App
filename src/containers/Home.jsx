@@ -1,7 +1,10 @@
 import React from 'react';
 
-import ControlPanel from '../components/ControlPanel';
-import ResultArea from '../components/ResultArea';
+import {
+  ControlPanel,
+  ResultArea,
+  NotificationPanel,
+} from '../components';
 import { loadDB, getCustomers, clearDB } from "../actions";
 
 const showCustomers = (customers) => {
@@ -27,10 +30,10 @@ const showCustomers = (customers) => {
 
 const Home = () => (
   <div className="Home">
-    <section className="Home-rightcolumn">
-      <ResultArea />
+    <section>
+      <NotificationPanel />
     </section>
-    <section className="Home-leftcolumn">
+    <section>
       <ControlPanel
         actions={{
           loadDB,
@@ -39,6 +42,9 @@ const Home = () => (
           clearDB,
         }}
       />
+    </section>
+    <section>
+      <ResultArea />
     </section>
   </div>
 );
