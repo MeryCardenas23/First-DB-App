@@ -1,27 +1,26 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-import { loadDB } from "../actions";
-
-const useStyles = makeStyles((theme) => ({
-  controlPanel: {
-    paddingTop: theme.spacing(10),
+const styles = (theme) => ({
+  root: {
     '& > *': {
       margin: theme.spacing(1),
     },
   },
-}));
+});
 
-export default function ControlPanel() {
-  const classes = useStyles();
+const ControlPanel = (props) => {
+  const { classes, actions } = props;
+  const { loadDB, getCustomers, showCustomers } = actions;
 
   return (
-    <div className={classes.controlPanel}>
+    <div className={classes.root}>
       <Button variant="contained" color="primary" onClick={() => loadDB()}>
         Load DB
       </Button>
-      <Button variant="contained" color="primary">
+      <Button variant="contained" color="primary" onClick={() => getCustomers(showCustomers)}>
         Query DB
       </Button>
       <Button variant="contained" color="secondary">
@@ -30,3 +29,9 @@ export default function ControlPanel() {
     </div>
   );
 }
+
+ControlPanel.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(ControlPanel);
