@@ -14,7 +14,7 @@ export default class Customer {
    * @param {[object]} customerData Data to add
    * @memberof Customer
    */
-  initialLoad = (customerData) => {
+  initialLoad = (customerData, sendStatusMessage) => {
     // Open database with version 1
     const request = indexedDB.open(this.dbName, 1);
 
@@ -24,7 +24,10 @@ export default class Customer {
     };
 
     request.onupgradeneeded = (event) => {
+      // Show the status of the operation on the interface
+      sendStatusMessage('Start: Loading of market database.');
       console.log('Populating customers...');
+
       const db = event.target.result;
 
       // Create an objectStore to hold information about our customers. We're
@@ -54,7 +57,12 @@ export default class Customer {
           customerObjectStore.add(customer);
         });
 
-        customerObjectStore.transaction.oncomplete = () => db.close();
+        customerObjectStore.transaction.oncomplete = () => {
+          // Show the status of the operation on the interface
+          sendStatusMessage('End: Market database is loaded.');
+
+          return db.close();
+        };
       }
     };
   }

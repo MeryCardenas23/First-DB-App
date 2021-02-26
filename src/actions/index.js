@@ -7,11 +7,11 @@ const DBNAME = 'market_db';
 /**
  * Add customer data to the database
  */
-const loadDB = () => {
+const loadDB = (sendStatusMessage) => {
   console.log('Load the Market database');
 
   let customer = new Customer(DBNAME);
-  customer.initialLoad(store.customers);
+  customer.initialLoad(store.customers, sendStatusMessage);
 }
 
 /**
