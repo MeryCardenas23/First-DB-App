@@ -28,6 +28,17 @@ const showCustomers = (customers) => {
   return resultArea;
 }
 
+const showNotification = (message) => {
+  const panel = document.getElementById('Notifications');
+
+  const notification = document.createElement('P');
+  notification.textContent = message;
+  notification.classList.add('notification');
+
+  panel.appendChild(notification);
+  return panel;
+}
+
 const Home = () => (
   <div className="Home">
     <section>
@@ -36,7 +47,7 @@ const Home = () => (
     <section>
       <ControlPanel
         actions={{
-          loadDB,
+          loadDB: (() => loadDB(showNotification)),
           getCustomers,
           showCustomers,
           clearDB,
