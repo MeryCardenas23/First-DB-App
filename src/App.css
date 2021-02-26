@@ -11,21 +11,9 @@
   padding: 50px 100px;
 }
 
-.Home-rightcolumn,
-.Home-leftcolumn {
-  padding: 50px;
-}
-
-.Home-rightcolumn {
-  width: 60%;
-}
-
-.Home-leftcolumn {
-  width: 40%;
-}
-
-#ResultArea {
+.Home section {
   padding: 16px;
+  width: 33.33%;
 }
 
 #ResultArea ol{
