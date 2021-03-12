@@ -50,10 +50,12 @@ const showCustomers = (customers) => {
 }
 
 const showNotification = (message) => {
+  const date = new Date().toISOString();
+
   const panel = document.getElementById('Notifications');
 
   const notification = document.createElement('P');
-  notification.textContent = message;
+  notification.textContent = `${date}: ${message}`;
   notification.classList.add('notification');
 
   panel.appendChild(notification);
