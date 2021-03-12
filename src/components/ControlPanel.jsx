@@ -10,7 +10,6 @@ const styles = (theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     minHeight: 500,
-    minWidth: 275,
     '& > *': {
       height: 50,
       margin: theme.spacing(1),
