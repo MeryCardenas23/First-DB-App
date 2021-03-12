@@ -21,7 +21,7 @@ const styles = (theme) => ({
 
 const ControlPanel = (props) => {
   const { classes, actions } = props;
-  const { loadDB, getCustomers, showCustomers, clearDB } = actions;
+  const { loadDB, getCustomers, clearDB } = actions;
 
   return (
     <>
@@ -33,7 +33,7 @@ const ControlPanel = (props) => {
         <Button variant="contained" color="primary" onClick={loadDB}>
           Load DB
         </Button>
-        <Button variant="contained" color="primary" onClick={() => getCustomers(showCustomers)}>
+        <Button variant="contained" color="primary" onClick={getCustomers}>
           Query DB
         </Button>
         <Button variant="contained" color="secondary" onClick={() => clearDB()}>
