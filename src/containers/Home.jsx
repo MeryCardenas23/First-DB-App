@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 
 import {
   ControlPanel,
@@ -6,6 +8,25 @@ import {
   NotificationPanel,
 } from '../components';
 import { loadDB, getCustomers, clearDB } from "../actions";
+
+const styles = (theme) => ({
+  root: {
+    display: 'flex',
+    padding: '50px 100px',
+    '& section': {
+      padding: 16,
+    },
+    '& section:nth-child(odd)': {
+      width: '40%',
+    },
+    '& section:nth-child(even)': {
+      width: '20%',
+    },
+    '& h4': {
+      textAlign: 'center',
+    },
+  },
+});
 
 const showCustomers = (customers) => {
   const resultArea = document.getElementById('ResultArea');
@@ -39,24 +60,32 @@ const showNotification = (message) => {
   return panel;
 }
 
-const Home = () => (
-  <div className="Home">
-    <section>
-      <NotificationPanel />
-    </section>
-    <section>
-      <ControlPanel
-        actions={{
-          loadDB: (() => loadDB(showNotification)),
-          getCustomers: (() => getCustomers(showCustomers, showNotification)),
-          clearDB,
-        }}
-      />
-    </section>
-    <section>
-      <ResultArea />
-    </section>
-  </div>
-);
+const Home = (props) => {
+  const { classes } = props;
 
-export default Home;
+  return(
+    <div className={classes.root}>
+      <section>
+        <NotificationPanel />
+      </section>
+      <section>
+        <ControlPanel
+          actions={{
+            loadDB: (() => loadDB(showNotification)),
+            getCustomers: (() => getCustomers(showCustomers, showNotification)),
+            clearDB,
+          }}
+        />
+      </section>
+      <section>
+        <ResultArea />
+      </section>
+    </div>
+  );
+};
+
+Home.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Home);
