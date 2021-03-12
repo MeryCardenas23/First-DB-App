@@ -14,6 +14,7 @@ const styles = (theme) => ({
   },
   title: {
     color: theme.palette.primary.contrastText,
+    textAlign: 'center',
   }
 });
 
