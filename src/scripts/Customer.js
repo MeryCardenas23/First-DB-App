@@ -72,7 +72,7 @@ export default class Customer {
    * @param {none}
    * @memberof Market
    */
-  getAllCustomers = (successAction) => {
+  getAllCustomers = (successAction, sendNotification) => {
     // Open database with version 1
     const request = indexedDB.open(this.dbName, 1);
     request.onerror = (event) => {
@@ -81,7 +81,7 @@ export default class Customer {
     };
 
     request.onsuccess = (event) => {
-      console.log('Get all customers...');
+      sendNotification('Get all customers...');
       const db = event.target.result;
       const transaction = db.transaction('customers');
 
@@ -91,7 +91,7 @@ export default class Customer {
       };
 
       transaction.oncomplete = function () {
-        console.log('All customers downloaded!');
+        sendNotification('All customers downloaded!');
       };
 
       const getAllRequest = transaction.objectStore('customers').getAll();

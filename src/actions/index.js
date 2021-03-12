@@ -17,11 +17,11 @@ const loadDB = (sendStatusMessage) => {
 /**
  * Get customers from database
  */
-const getCustomers = (successAction) => {
+const getCustomers = (successAction, sendNotification) => {
   console.log('Get customers');
 
   let customer = new Customer(DBNAME);
-  customer.getAllCustomers(successAction);
+  customer.getAllCustomers(successAction, sendNotification);
 }
 
 /**
