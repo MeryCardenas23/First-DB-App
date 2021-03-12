@@ -48,8 +48,7 @@ const Home = () => (
       <ControlPanel
         actions={{
           loadDB: (() => loadDB(showNotification)),
-          getCustomers,
-          showCustomers,
+          getCustomers: (() => getCustomers(showCustomers, showNotification)),
           clearDB,
         }}
       />
