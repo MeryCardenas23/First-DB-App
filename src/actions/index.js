@@ -27,10 +27,10 @@ const getCustomers = (successAction, sendNotification) => {
 /**
  * Clear all customer data from the database
  */
-const clearDB = () => {
+const clearDB = (sendNotification) => {
   console.log('Delete all rows from the Customers database');
   let customer = new Customer(DBNAME);
-  customer.removeAllRows();
+  customer.removeAllRows(sendNotification);
 }
 
 export {

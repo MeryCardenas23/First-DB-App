@@ -75,7 +75,7 @@ const Home = (props) => {
           actions={{
             loadDB: (() => loadDB(showNotification)),
             getCustomers: (() => getCustomers(showCustomers, showNotification)),
-            clearDB,
+            clearDB: (() => clearDB(showNotification)),
           }}
         />
       </section>
