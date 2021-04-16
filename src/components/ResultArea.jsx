@@ -5,9 +5,10 @@ import { Paper, Typography } from '@material-ui/core';
 
 const styles = (theme) => ({
   root: {
-    minHeight: 500,
+    height: 500,
     minWidth: 275,
     padding: theme.spacing(2),
+    overflowY: 'scroll',
   },
 });
 
