@@ -35,7 +35,7 @@ const ControlPanel = (props) => {
         <Button variant="contained" color="primary" onClick={getCustomers}>
           Query DB
         </Button>
-        <Button variant="contained" color="secondary" onClick={() => clearDB()}>
+        <Button variant="contained" color="secondary" onClick={clearDB}>
           Clear DB
         </Button>
       </div>

@@ -106,7 +106,7 @@ export default class Customer {
    * Remove all rows from the database
    * @memberof Customer
    */
-  removeAllRows = () => {
+  removeAllRows = (sendNotification) => {
     const request = indexedDB.open(this.dbName, 1);
 
     request.onerror = (event) => {
@@ -115,7 +115,7 @@ export default class Customer {
     };
 
     request.onsuccess = (event) => {
-      console.log('Deleting all customers...');
+      sendNotification('Deleting all customers...');
       const db = event.target.result;
       const transaction = db.transaction('customers', 'readwrite');
 
@@ -125,7 +125,7 @@ export default class Customer {
       };
 
       transaction.oncomplete = (event) => {
-        console.log('All rows removed!');
+        sendNotification('All rows removed!');
       };
 
       const objectStore = transaction.objectStore('customers');
