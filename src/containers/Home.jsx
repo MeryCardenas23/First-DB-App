@@ -33,19 +33,23 @@ const showCustomers = (customers) => {
 
   const title = document.createElement('H2');
   title.textContent = 'Customer List';
-
-  const list = document.createElement('OL');
-
-  customers.map(customer => {
-    const item = document.createElement('LI');
-    item.textContent = customer.name;
-
-    return list.appendChild(item);
-  });
-
   resultArea.appendChild(title);
-  resultArea.appendChild(list);
 
+  if (customers.length > 0) {
+    const list = document.createElement('OL');
+
+    customers.map(customer => {
+      const item = document.createElement('LI');
+      item.textContent = customer.name;
+      return list.appendChild(item);
+    });
+
+    resultArea.appendChild(list);
+  } else {
+    const message = document.createElement('P');
+    message.textContent = 'No registered customers';
+    resultArea.appendChild(message);
+  }
   return resultArea;
 }
 
@@ -65,7 +69,7 @@ const showNotification = (message) => {
 const Home = (props) => {
   const { classes } = props;
 
-  return(
+  return (
     <div className={classes.root}>
       <section>
         <NotificationPanel />
